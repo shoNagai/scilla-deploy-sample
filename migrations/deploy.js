@@ -4,6 +4,7 @@ const { Zilliqa } = require('@zilliqa-js/zilliqa');
 const CP = require('@zilliqa-js/crypto');
 
 const fs = require('fs');
+const argv = require('yargs').argv;
 
 const zilliqa = new Zilliqa('https://dev-api.zilliqa.com');
 
@@ -11,8 +12,13 @@ const CHAIN_ID = 333; // Developer testnet
 const MSG_VERSION = 1;
 const VERSION = bytes.pack(CHAIN_ID, MSG_VERSION);
 
+if (!argv.key) {
+  console.log('Private key is required');
+  process.exit(0);
+}
+
 // Populate the wallet with an account
-privkey = '688c37aa9ade9a0a18706feeeab87b663013f7b624f1d5aa1bffb24e0a5e0558';
+privkey = argv.key;
 
 zilliqa.wallet.addByPrivateKey(
   privkey
