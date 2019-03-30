@@ -1,4 +1,4 @@
-# scilla-test
+# scilla-contract-deploy
 
 deploy HellowWorld contract to Zilliqa Test Net.
 
